@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     public int targetScore = 4; // Score to reach before changing scenes
 
-    void Awake()
+    public void Awake()
     {
         // Singleton pattern
         if (Instance == null)
@@ -25,15 +25,10 @@ public class GameManager : MonoBehaviour
     {
         score++;
         Debug.Log("Score: " + score);
-
-        if (score >= targetScore)
-        {
-            LoadNewScene();
-        }
     }
 
-    void LoadNewScene()
+    public void LoadNewScene()
     {
-        SceneManager.LoadScene("VictoryScene"); // Use your new scene's name
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Use your new scene's name
     }
 }
